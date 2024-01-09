@@ -1,0 +1,71 @@
+html{
+	position: relative;
+}
+
+body{
+	margin-top: 50px;
+	margin-bottom: 100px;
+}
+
+
+.jumbotron{
+	background-image: url(../img/header-bg.png);
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: 0 - 200px;
+	color: #eaeaea;
+
+}
+.jumbotron img {
+	width: 200px;
+	border: 5px solid #666;
+}
+
+
+
+hr{
+	width: 250px;
+	border-top: 3px solid #666;
+}
+section {
+	min-height: 400px;
+}
+
+.pkiri, .pkanan{
+	opacity: 0;
+	transform: translate(-50px, 0);
+	transition: 1.5s;
+}
+
+.pkanan{
+	transform: translate(50px, 0);
+}
+
+
+
+.pkiri.pmuncul, .pkanan.pmuncul{
+	opacity: 1;
+	transform: translate(0,0);
+}
+
+.portofolio{
+	background-color: #eee;
+}
+
+.contact{
+	min-height: 800px;
+}
+
+footer{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	height: 60px;
+	background-color: #333;
+	padding-top: 20px;
+}
+
+footer p{
+	color: #aaa;
+	font-size: 1em;
+}

@@ -80,18 +80,140 @@
       "dateModified": "2024-12-23"
     }
     </script>
+
+  <style>
+        @import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap");
+
+        :root {
+            --purple-gradient: linear-gradient(135deg, #6d28d9 0%, #a855f7 50%, #ec4897 100%);
+            --transition-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #050812;
+            background-image: 
+                radial-gradient(ellipse 100% 60% at 50% -10%, rgba(109, 40, 217, 0.18) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 30% at 10% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+            color: white;
+            font-family: "DM Sans", sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Background Noise Texture */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.018;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .container {
+            padding: 2rem;
+            z-index: 10;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        h1 {
+            font-family: "Syne", sans-serif;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #c084fc, #f472b6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Glass Loader */
+        .loader-wrapper {
+            width: 280px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 99px;
+            margin: 0 auto 2.5rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .loader-bar {
+            position: absolute;
+            height: 100%;
+            width: 0%;
+            background: var(--purple-gradient);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+            animation: progress 3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+        }
+
+        .btn-manual {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 12px;
+            background: var(--purple-gradient);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s var(--transition-spring), box-shadow 0.3s ease;
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-manual:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 32px rgba(139, 92, 246, 0.4);
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 
 <body>
-  <p>
-    Redirecting to my official portfolio...
-    <a href="https://khaerulummam.my.id/">Click here if you are not redirected.</a>
-  </p>
+  <div class="container">
+        <div class="section-badge" style="display: inline-block; margin-bottom: 1rem; padding: 0.4rem 1rem; border-radius: 99px; background: rgba(109, 40, 217, 0.12); border: 1px solid rgba(168, 85, 247, 0.25); color: #c494fa; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">
+            System Update
+        </div>
+        <h1>Moving to a New Home</h1>
+        <p>Redirecting you to my official portfolio...</p>
+        
+        <div class="loader-wrapper">
+            <div class="loader-bar"></div>
+        </div>
 
-  <script>
-    // JavaScript fallback
-    window.location.replace("https://khaerulummam.my.id/");
-  </script>
+        <a href="https://khaerulummam.my.id/" class="btn-manual" id="redirect-link">
+            Visit Now
+        </a>
+    </div>
+
+    <script>
+        const targetURL = "https://khaerulummam.my.id/";
+        
+        // Redirect setelah 3 detik (sesuai durasi animasi loader)
+        setTimeout(() => {
+            // Menggunakan replace agar history browser tidak menumpuk (bagus untuk UX)
+            window.location.replace(targetURL);
+        }, 3000);
+    </script>
 </body>
 
 </html>
